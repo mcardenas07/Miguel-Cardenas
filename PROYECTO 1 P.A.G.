@@ -1,0 +1,89 @@
+package application;
+
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        VBox root = new VBox();
+        root.setPadding(new Insets(10));
+        root.setSpacing(10);
+
+        GridPane gridPane = new GridPane();
+        gridPane.setVgap(10);
+        gridPane.setHgap(10);
+
+        Image image1 = new Image("https://thumbs.dreamstime.com/b/adulto-3863257.jpg");
+        ImageView imageView1 = new ImageView(image1);
+        imageView1.setFitWidth(50);
+        imageView1.setFitHeight(50);
+
+        Label nameLabel1 = new Label("Nombre: Sebastián ");
+        Label lastNameLabel1 = new Label("Apellido:  Ortega");
+        Image image2 = new Image("https://th.bing.com/th/id/OIP.JfifpCTLDVFEclLYzqQL1wHaFW?rs=1&pid=ImgDetMain");
+        ImageView imageView2 = new ImageView(image2);
+        imageView2.setFitWidth(50);
+        imageView2.setFitHeight(50);
+
+        Label nameLabel2 = new Label("Nombre: Milena");
+        Label lastNameLabel2 = new Label("Apellido: Torres");
+
+        Image image3 = new Image("https://th.bing.com/th/id/OIP.jVoZeEweNh7hBS19SVC9egHaIp?rs=1&pid=ImgDetMain");
+        ImageView imageView3 = new ImageView(image3);
+        imageView3.setFitWidth(50);
+        imageView3.setFitHeight(50);
+
+        Label nameLabel3 = new Label("Nombre: Tamara");
+        Label lastNameLabel3 = new Label("Apellido: Guerron");
+
+        Image image4 = new Image("https://th.bing.com/th/id/OIP.QrlNR_ZWUcHESXxeRHapogHaHa?rs=1&pid=ImgDetMain");
+        ImageView imageView4 = new ImageView(image4);
+        imageView4.setFitWidth(50);
+        imageView4.setFitHeight(50);
+        Label nameLabel4 = new Label("Nombre: Tomás");
+        Label lastNameLabel4 = new Label("Apellido: Delgado");
+
+        gridPane.addRow(0, imageView1, nameLabel1, lastNameLabel1);
+        gridPane.addRow(1, imageView2, nameLabel2, lastNameLabel2);
+        gridPane.addRow(2, imageView3, nameLabel3, lastNameLabel3);
+        gridPane.addRow(3, imageView4, nameLabel4, lastNameLabel4);
+
+        VBox listViewBox = new VBox();
+        listViewBox.setSpacing(10);
+
+        ListView<String> listView = new ListView<>();
+        listView.setItems(FXCollections.observableArrayList());
+        listViewBox.getChildren().add(listView);
+
+        TextField textField = new TextField();
+        textField.setPromptText("Ingrese un nuevo elemento");
+        listViewBox.getChildren().add(textField);
+
+        HBox hbox = new HBox();
+        hbox.setSpacing(10);
+        hbox.getChildren().addAll(gridPane, listViewBox);
+        root.getChildren().add(hbox);
+
+        Scene scene = new Scene(root, 600, 400);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("PERSONAJES");
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);;
+    }
+}
